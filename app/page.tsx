@@ -7,8 +7,9 @@ interface Star {
   y: number;
 }
 interface PathResult {
-  path: { name: string; x: number; y: number }[];
-  hops: number;
+  path?: { name: string; x: number; y: number }[];
+  hops?: number;
+  error?: string;
 }
 export default function ConstellationVisualizer() {
   const [stars, setStars] = useState<Star[]>([]);
@@ -30,12 +31,10 @@ export default function ConstellationVisualizer() {
       const data = await res.json();
       setResult(data);
     } catch {
-      setResult(null);
+      setResult({ error: 'Failed to fetch path' });
     }
     setLoading(false);
   };
-  // Get coordinates of a star by name
-  const getStarPos = (name: string) => stars.find(s => s.name === name);
   return (
     <div className="max-w-4xl mx-auto p-8">
       <h1 className="text-4xl font-bold mb-8">Constellation Visualizer</h1>
@@ -89,7 +88,7 @@ export default function ConstellationVisualizer() {
           {/* Draw the shortest path (bright line) */}
           {result?.path && result.path.length > 1 && (
             result.path.slice(0, -1).map((node, index) => {
-              const next = result.path[index + 1];
+              const next = result.path![index + 1];
               return (
                 <line
                   key={index}
@@ -128,7 +127,7 @@ export default function ConstellationVisualizer() {
         </svg>
       </div>
       {/* Result */}
-      {result && !result.error && (
+      {result && !result.error && result.path && (
         <div className="mt-6 p-4 border rounded bg-gray-50">
           <p className="font-semibold mb-2">
             Shortest path found ({result.hops} hops):
@@ -140,6 +139,12 @@ export default function ConstellationVisualizer() {
               </span>
             ))}
           </div>
+        </div>
+      )}
+      {/* Error message */}
+      {result?.error && (
+        <div className="mt-6 p-4 border rounded bg-red-50 text-red-600">
+          {result.error}
         </div>
       )}
     </div>
