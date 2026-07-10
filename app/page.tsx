@@ -47,17 +47,43 @@ export default function ConstellationVisualizer() {
       })
       .catch(err => console.error(err));
   }, []);
-  const findPath = async () => {
-    if (!start || !end) return;
+  const findPathBetween = async (startName: string, endName: string) => {
+    if (!startName || !endName) return;
     setLoading(true);
     try {
-      const res = await fetch(`/api/path?start=${start}&end=${end}`);
+      const res = await fetch(`/api/path?start=${startName}&end=${endName}`);
       const data = await res.json();
       setResult(data);
     } catch {
       setResult({ error: 'Failed to fetch path' });
     }
     setLoading(false);
+  };
+
+  const findPath = () => findPathBetween(start, end);
+
+  const handleStarClick = (starName: string) => {
+    if (!start) {
+      setStart(starName);
+      setEnd('');
+      setResult(null);
+      return;
+    }
+
+    if (!end) {
+      if (starName === start) {
+        setStart('');
+        setResult(null);
+        return;
+      }
+      setEnd(starName);
+      findPathBetween(start, starName);
+      return;
+    }
+
+    setStart(starName);
+    setEnd('');
+    setResult(null);
   };
   return (
     <div className="max-w-4xl mx-auto p-8">
@@ -84,6 +110,9 @@ export default function ConstellationVisualizer() {
           {loading ? 'Searching...' : 'Find Path'}
         </button>
       </div>
+      <p className="text-sm text-gray-500 mb-4">
+        Click a star to set the start, then click another to find the path.
+      </p>
       {/* SVG Visualization */}
       <div className="border rounded-lg bg-black p-4">
         <svg width="900" height="650" className="bg-[#0a0a0a]">
@@ -118,7 +147,17 @@ export default function ConstellationVisualizer() {
           )}
           {/* Draw all stars */}
           {stars.map((star) => (
-            <g key={star.id}>
+            <g
+              key={star.id}
+              onClick={() => handleStarClick(star.name)}
+              className="cursor-pointer"
+            >
+              <circle
+                cx={star.x}
+                cy={star.y}
+                r="14"
+                fill="transparent"
+              />
               <circle
                 cx={star.x}
                 cy={star.y}
@@ -126,6 +165,7 @@ export default function ConstellationVisualizer() {
                 fill={start === star.name ? "#ffcc00" : end === star.name ? "#ff6666" : "#aaa"}
                 stroke="#fff"
                 strokeWidth="1"
+                className="hover:fill-white transition-colors"
               />
               <text
                 x={star.x}
@@ -133,6 +173,7 @@ export default function ConstellationVisualizer() {
                 fill="#ccc"
                 fontSize="11"
                 textAnchor="middle"
+                pointerEvents="none"
               >
                 {star.name}
               </text>
