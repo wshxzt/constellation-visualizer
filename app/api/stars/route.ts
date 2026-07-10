@@ -10,7 +10,7 @@ export async function GET() {
       ORDER BY s.id
     `);
     const stars = result.records.map(record => ({
-      id: record.get('id'),
+      id: record.get('id').toNumber(),
       name: record.get('name'),
       x: record.get('x'),
       y: record.get('y'),
