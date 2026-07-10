@@ -24,6 +24,5 @@ export async function GET() {
     );
   } finally {
     await session.close();
-    await driver.close(); // Close driver after each request
   }
 }

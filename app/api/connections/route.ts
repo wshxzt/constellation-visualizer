@@ -31,6 +31,5 @@ export async function GET() {
     );
   } finally {
     await session.close();
-    await driver.close();
   }
 }
