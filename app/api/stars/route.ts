@@ -17,8 +17,13 @@ export async function GET() {
     }));
     return NextResponse.json(stars);
   } catch (error) {
-    return NextResponse.json({ error: 'Failed to fetch stars' }, { status: 500 });
+    console.error('Stars API error:', error);
+    return NextResponse.json(
+      { error: 'Failed to fetch stars', details: String(error) },
+      { status: 500 }
+    );
   } finally {
     await session.close();
+    await driver.close(); // Close driver after each request
   }
 }
