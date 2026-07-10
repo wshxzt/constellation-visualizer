@@ -6,6 +6,10 @@ interface Star {
   x: number;
   y: number;
 }
+interface Connection {
+  from: { name: string; x: number; y: number };
+  to: { name: string; x: number; y: number };
+}
 interface PathResult {
   path?: { name: string; x: number; y: number }[];
   hops?: number;
@@ -13,15 +17,15 @@ interface PathResult {
 }
 export default function ConstellationVisualizer() {
   const [stars, setStars] = useState<Star[]>([]);
+  const [connections, setConnections] = useState<Connection[]>([]);
   const [start, setStart] = useState('');
   const [end, setEnd] = useState('');
   const [result, setResult] = useState<PathResult | null>(null);
   const [loading, setLoading] = useState(false);
-  // Fetch all stars on load
+  // Fetch stars and connections on load
   useEffect(() => {
-    fetch('/api/stars')
-      .then(res => res.json())
-      .then(setStars);
+    fetch('/api/stars').then(res => res.json()).then(setStars);
+    fetch('/api/connections').then(res => res.json()).then(setConnections);
   }, []);
   const findPath = async () => {
     if (!start || !end) return;
@@ -40,21 +44,13 @@ export default function ConstellationVisualizer() {
       <h1 className="text-4xl font-bold mb-8">Constellation Visualizer</h1>
       {/* Controls */}
       <div className="flex gap-4 mb-6">
-        <select 
-          className="border p-2 rounded w-64" 
-          value={start} 
-          onChange={(e) => setStart(e.target.value)}
-        >
+        <select className="border p-2 rounded w-64" value={start} onChange={(e) => setStart(e.target.value)}>
           <option value="">Select Start Star</option>
           {stars.map(star => (
             <option key={star.id} value={star.name}>{star.name}</option>
           ))}
         </select>
-        <select 
-          className="border p-2 rounded w-64" 
-          value={end} 
-          onChange={(e) => setEnd(e.target.value)}
-        >
+        <select className="border p-2 rounded w-64" value={end} onChange={(e) => setEnd(e.target.value)}>
           <option value="">Select End Star</option>
           {stars.map(star => (
             <option key={star.id} value={star.name}>{star.name}</option>
@@ -71,21 +67,19 @@ export default function ConstellationVisualizer() {
       {/* SVG Visualization */}
       <div className="border rounded-lg bg-black p-4">
         <svg width="900" height="650" className="bg-[#0a0a0a]">
-          {/* Draw all connections (light gray) */}
-          {stars.map((starA, i) =>
-            stars.slice(i + 1).map((starB, j) => (
-              <line
-                key={`${i}-${j}`}
-                x1={starA.x}
-                y1={starA.y}
-                x2={starB.x}
-                y2={starB.y}
-                stroke="#333"
-                strokeWidth="1"
-              />
-            ))
-          )}
-          {/* Draw the shortest path (bright line) */}
+          {/* Draw ONLY real connections */}
+          {connections.map((conn, index) => (
+            <line
+              key={index}
+              x1={conn.from.x}
+              y1={conn.from.y}
+              x2={conn.to.x}
+              y2={conn.to.y}
+              stroke="#333"
+              strokeWidth="1"
+            />
+          ))}
+          {/* Draw the shortest path in green */}
           {result?.path && result.path.length > 1 && (
             result.path.slice(0, -1).map((node, index) => {
               const next = result.path![index + 1];
@@ -141,7 +135,7 @@ export default function ConstellationVisualizer() {
           </div>
         </div>
       )}
-      {/* Error message */}
+      {/* Error */}
       {result?.error && (
         <div className="mt-6 p-4 border rounded bg-red-50 text-red-600">
           {result.error}
