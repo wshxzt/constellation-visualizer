@@ -1,0 +1,8 @@
+{
+  "name": "constellation-spanner-seed",
+  "private": true,
+  "type": "module",
+  "dependencies": {
+    "@google-cloud/spanner": "^7.0.0"
+  }
+}

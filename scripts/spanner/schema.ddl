@@ -1,0 +1,15 @@
+CREATE TABLE Stars (
+  StarId INT64 NOT NULL,
+  Name STRING(MAX) NOT NULL,
+  X FLOAT64 NOT NULL,
+  Y FLOAT64 NOT NULL,
+) PRIMARY KEY (StarId);
+
+CREATE UNIQUE INDEX StarsByName ON Stars(Name);
+
+CREATE TABLE Connections (
+  FromStarId INT64 NOT NULL,
+  ToStarId INT64 NOT NULL,
+  CONSTRAINT FK_Connections_FromStar FOREIGN KEY (FromStarId) REFERENCES Stars (StarId),
+  CONSTRAINT FK_Connections_ToStar FOREIGN KEY (ToStarId) REFERENCES Stars (StarId),
+) PRIMARY KEY (FromStarId, ToStarId);

@@ -1,0 +1,474 @@
+[
+  {
+    "fromStarId": 1,
+    "toStarId": 2
+  },
+  {
+    "fromStarId": 1,
+    "toStarId": 3
+  },
+  {
+    "fromStarId": 1,
+    "toStarId": 4
+  },
+  {
+    "fromStarId": 1,
+    "toStarId": 5
+  },
+  {
+    "fromStarId": 1,
+    "toStarId": 6
+  },
+  {
+    "fromStarId": 1,
+    "toStarId": 7
+  },
+  {
+    "fromStarId": 1,
+    "toStarId": 8
+  },
+  {
+    "fromStarId": 1,
+    "toStarId": 9
+  },
+  {
+    "fromStarId": 1,
+    "toStarId": 10
+  },
+  {
+    "fromStarId": 1,
+    "toStarId": 11
+  },
+  {
+    "fromStarId": 1,
+    "toStarId": 12
+  },
+  {
+    "fromStarId": 1,
+    "toStarId": 13
+  },
+  {
+    "fromStarId": 1,
+    "toStarId": 14
+  },
+  {
+    "fromStarId": 1,
+    "toStarId": 15
+  },
+  {
+    "fromStarId": 1,
+    "toStarId": 16
+  },
+  {
+    "fromStarId": 1,
+    "toStarId": 17
+  },
+  {
+    "fromStarId": 1,
+    "toStarId": 18
+  },
+  {
+    "fromStarId": 1,
+    "toStarId": 19
+  },
+  {
+    "fromStarId": 1,
+    "toStarId": 20
+  },
+  {
+    "fromStarId": 2,
+    "toStarId": 3
+  },
+  {
+    "fromStarId": 2,
+    "toStarId": 4
+  },
+  {
+    "fromStarId": 2,
+    "toStarId": 5
+  },
+  {
+    "fromStarId": 2,
+    "toStarId": 6
+  },
+  {
+    "fromStarId": 2,
+    "toStarId": 7
+  },
+  {
+    "fromStarId": 2,
+    "toStarId": 8
+  },
+  {
+    "fromStarId": 2,
+    "toStarId": 9
+  },
+  {
+    "fromStarId": 2,
+    "toStarId": 10
+  },
+  {
+    "fromStarId": 2,
+    "toStarId": 11
+  },
+  {
+    "fromStarId": 2,
+    "toStarId": 12
+  },
+  {
+    "fromStarId": 2,
+    "toStarId": 13
+  },
+  {
+    "fromStarId": 2,
+    "toStarId": 14
+  },
+  {
+    "fromStarId": 2,
+    "toStarId": 15
+  },
+  {
+    "fromStarId": 2,
+    "toStarId": 16
+  },
+  {
+    "fromStarId": 2,
+    "toStarId": 17
+  },
+  {
+    "fromStarId": 2,
+    "toStarId": 18
+  },
+  {
+    "fromStarId": 2,
+    "toStarId": 19
+  },
+  {
+    "fromStarId": 2,
+    "toStarId": 20
+  },
+  {
+    "fromStarId": 3,
+    "toStarId": 4
+  },
+  {
+    "fromStarId": 3,
+    "toStarId": 7
+  },
+  {
+    "fromStarId": 3,
+    "toStarId": 9
+  },
+  {
+    "fromStarId": 3,
+    "toStarId": 10
+  },
+  {
+    "fromStarId": 3,
+    "toStarId": 11
+  },
+  {
+    "fromStarId": 3,
+    "toStarId": 20
+  },
+  {
+    "fromStarId": 4,
+    "toStarId": 6
+  },
+  {
+    "fromStarId": 4,
+    "toStarId": 9
+  },
+  {
+    "fromStarId": 4,
+    "toStarId": 11
+  },
+  {
+    "fromStarId": 4,
+    "toStarId": 12
+  },
+  {
+    "fromStarId": 4,
+    "toStarId": 14
+  },
+  {
+    "fromStarId": 4,
+    "toStarId": 15
+  },
+  {
+    "fromStarId": 4,
+    "toStarId": 18
+  },
+  {
+    "fromStarId": 5,
+    "toStarId": 6
+  },
+  {
+    "fromStarId": 5,
+    "toStarId": 7
+  },
+  {
+    "fromStarId": 5,
+    "toStarId": 13
+  },
+  {
+    "fromStarId": 5,
+    "toStarId": 17
+  },
+  {
+    "fromStarId": 5,
+    "toStarId": 18
+  },
+  {
+    "fromStarId": 6,
+    "toStarId": 7
+  },
+  {
+    "fromStarId": 6,
+    "toStarId": 8
+  },
+  {
+    "fromStarId": 6,
+    "toStarId": 9
+  },
+  {
+    "fromStarId": 6,
+    "toStarId": 10
+  },
+  {
+    "fromStarId": 6,
+    "toStarId": 11
+  },
+  {
+    "fromStarId": 6,
+    "toStarId": 12
+  },
+  {
+    "fromStarId": 6,
+    "toStarId": 13
+  },
+  {
+    "fromStarId": 6,
+    "toStarId": 14
+  },
+  {
+    "fromStarId": 6,
+    "toStarId": 15
+  },
+  {
+    "fromStarId": 6,
+    "toStarId": 16
+  },
+  {
+    "fromStarId": 6,
+    "toStarId": 17
+  },
+  {
+    "fromStarId": 6,
+    "toStarId": 18
+  },
+  {
+    "fromStarId": 6,
+    "toStarId": 19
+  },
+  {
+    "fromStarId": 6,
+    "toStarId": 20
+  },
+  {
+    "fromStarId": 7,
+    "toStarId": 8
+  },
+  {
+    "fromStarId": 7,
+    "toStarId": 10
+  },
+  {
+    "fromStarId": 7,
+    "toStarId": 14
+  },
+  {
+    "fromStarId": 7,
+    "toStarId": 15
+  },
+  {
+    "fromStarId": 7,
+    "toStarId": 17
+  },
+  {
+    "fromStarId": 7,
+    "toStarId": 20
+  },
+  {
+    "fromStarId": 8,
+    "toStarId": 10
+  },
+  {
+    "fromStarId": 8,
+    "toStarId": 12
+  },
+  {
+    "fromStarId": 8,
+    "toStarId": 17
+  },
+  {
+    "fromStarId": 9,
+    "toStarId": 10
+  },
+  {
+    "fromStarId": 9,
+    "toStarId": 11
+  },
+  {
+    "fromStarId": 9,
+    "toStarId": 12
+  },
+  {
+    "fromStarId": 9,
+    "toStarId": 13
+  },
+  {
+    "fromStarId": 9,
+    "toStarId": 14
+  },
+  {
+    "fromStarId": 9,
+    "toStarId": 15
+  },
+  {
+    "fromStarId": 9,
+    "toStarId": 16
+  },
+  {
+    "fromStarId": 9,
+    "toStarId": 17
+  },
+  {
+    "fromStarId": 9,
+    "toStarId": 18
+  },
+  {
+    "fromStarId": 9,
+    "toStarId": 19
+  },
+  {
+    "fromStarId": 9,
+    "toStarId": 20
+  },
+  {
+    "fromStarId": 10,
+    "toStarId": 11
+  },
+  {
+    "fromStarId": 10,
+    "toStarId": 13
+  },
+  {
+    "fromStarId": 10,
+    "toStarId": 14
+  },
+  {
+    "fromStarId": 10,
+    "toStarId": 17
+  },
+  {
+    "fromStarId": 10,
+    "toStarId": 18
+  },
+  {
+    "fromStarId": 11,
+    "toStarId": 20
+  },
+  {
+    "fromStarId": 12,
+    "toStarId": 13
+  },
+  {
+    "fromStarId": 12,
+    "toStarId": 14
+  },
+  {
+    "fromStarId": 12,
+    "toStarId": 15
+  },
+  {
+    "fromStarId": 12,
+    "toStarId": 16
+  },
+  {
+    "fromStarId": 12,
+    "toStarId": 17
+  },
+  {
+    "fromStarId": 12,
+    "toStarId": 18
+  },
+  {
+    "fromStarId": 12,
+    "toStarId": 19
+  },
+  {
+    "fromStarId": 12,
+    "toStarId": 20
+  },
+  {
+    "fromStarId": 13,
+    "toStarId": 14
+  },
+  {
+    "fromStarId": 13,
+    "toStarId": 17
+  },
+  {
+    "fromStarId": 13,
+    "toStarId": 19
+  },
+  {
+    "fromStarId": 14,
+    "toStarId": 15
+  },
+  {
+    "fromStarId": 14,
+    "toStarId": 16
+  },
+  {
+    "fromStarId": 14,
+    "toStarId": 18
+  },
+  {
+    "fromStarId": 15,
+    "toStarId": 16
+  },
+  {
+    "fromStarId": 15,
+    "toStarId": 17
+  },
+  {
+    "fromStarId": 15,
+    "toStarId": 18
+  },
+  {
+    "fromStarId": 15,
+    "toStarId": 19
+  },
+  {
+    "fromStarId": 15,
+    "toStarId": 20
+  },
+  {
+    "fromStarId": 16,
+    "toStarId": 17
+  },
+  {
+    "fromStarId": 16,
+    "toStarId": 20
+  },
+  {
+    "fromStarId": 18,
+    "toStarId": 19
+  },
+  {
+    "fromStarId": 19,
+    "toStarId": 20
+  }
+]

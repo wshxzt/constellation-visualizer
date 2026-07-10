@@ -2,6 +2,8 @@
 
 # dependencies
 /node_modules
+spanner-app/node_modules
+scripts/spanner/node_modules
 /.pnp
 .pnp.*
 .yarn/*
@@ -16,6 +18,9 @@
 # next.js
 /.next/
 /out/
+spanner-app/.next/
+spanner-app/next-env.d.ts
+spanner-app/out/
 
 # production
 /build

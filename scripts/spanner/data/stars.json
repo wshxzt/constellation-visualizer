@@ -1,0 +1,122 @@
+[
+  {
+    "id": 1,
+    "name": "Sirius",
+    "x": 166,
+    "y": 341
+  },
+  {
+    "id": 2,
+    "name": "Vega",
+    "x": 536,
+    "y": 407
+  },
+  {
+    "id": 3,
+    "name": "Betelgeuse",
+    "x": 278,
+    "y": 254
+  },
+  {
+    "id": 4,
+    "name": "Rigel",
+    "x": 768,
+    "y": 140
+  },
+  {
+    "id": 5,
+    "name": "Altair",
+    "x": 62,
+    "y": 63
+  },
+  {
+    "id": 6,
+    "name": "Deneb",
+    "x": 713,
+    "y": 366
+  },
+  {
+    "id": 7,
+    "name": "Arcturus",
+    "x": 748,
+    "y": 44
+  },
+  {
+    "id": 8,
+    "name": "Antares",
+    "x": 309,
+    "y": 447
+  },
+  {
+    "id": 9,
+    "name": "Spica",
+    "x": 728,
+    "y": 565
+  },
+  {
+    "id": 10,
+    "name": "Pollux",
+    "x": 734,
+    "y": 387
+  },
+  {
+    "id": 11,
+    "name": "Capella",
+    "x": 723,
+    "y": 170
+  },
+  {
+    "id": 12,
+    "name": "Aldebaran",
+    "x": 571,
+    "y": 114
+  },
+  {
+    "id": 13,
+    "name": "Procyon",
+    "x": 653,
+    "y": 167
+  },
+  {
+    "id": 14,
+    "name": "Fomalhaut",
+    "x": 65,
+    "y": 410
+  },
+  {
+    "id": 15,
+    "name": "Regulus",
+    "x": 465,
+    "y": 285
+  },
+  {
+    "id": 16,
+    "name": "Bellatrix",
+    "x": 418,
+    "y": 520
+  },
+  {
+    "id": 17,
+    "name": "Castor",
+    "x": 574,
+    "y": 376
+  },
+  {
+    "id": 18,
+    "name": "Achernar",
+    "x": 207,
+    "y": 463
+  },
+  {
+    "id": 19,
+    "name": "Canopus",
+    "x": 194,
+    "y": 513
+  },
+  {
+    "id": 20,
+    "name": "Hadar",
+    "x": 227,
+    "y": 57
+  }
+]

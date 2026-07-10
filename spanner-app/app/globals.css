@@ -1,7 +1,7 @@
 @import "tailwindcss";
 
-/* Shared UI component classes */
-@source "../shared";
+/* Shared UI lives outside this app; include it in the Tailwind scan. */
+@source "../../shared";
 
 :root {
   --background: #ffffff;
