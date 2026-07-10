@@ -24,8 +24,28 @@ export default function ConstellationVisualizer() {
   const [loading, setLoading] = useState(false);
   // Fetch stars and connections on load
   useEffect(() => {
-    fetch('/api/stars').then(res => res.json()).then(setStars);
-    fetch('/api/connections').then(res => res.json()).then(setConnections);
+    // Fetch stars
+    fetch('/api/stars')
+      .then(res => {
+        if (!res.ok) throw new Error('Failed to fetch stars');
+        return res.json();
+      })
+      .then(data => {
+        console.log('Stars loaded:', data);
+        setStars(data);
+      })
+      .catch(err => console.error(err));
+    // Fetch connections
+    fetch('/api/connections')
+      .then(res => {
+        if (!res.ok) throw new Error('Failed to fetch connections');
+        return res.json();
+      })
+      .then(data => {
+        console.log('Connections loaded:', data);
+        setConnections(data);
+      })
+      .catch(err => console.error(err));
   }, []);
   const findPath = async () => {
     if (!start || !end) return;
