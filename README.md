@@ -2,6 +2,8 @@
 
 Interactive 3D constellation explorer. Pick two bright stars and find the shortest hop path across a real sky graph — backed by either **Neo4j** or **Google Cloud Spanner Graph**.
 
+![Dreams in the stars — shortest path from Betelgeuse to Sirius](docs/screenshot.jpg)
+
 ## What it shows
 
 - **88 real bright stars** at true RA/Dec positions on a Three.js globe
