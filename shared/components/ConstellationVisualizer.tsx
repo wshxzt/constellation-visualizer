@@ -103,13 +103,13 @@ export function ConstellationVisualizer({
       <main className="relative z-10 mx-auto flex w-full max-w-5xl flex-col px-6 py-10 md:px-10 md:py-14">
         <header className="cv-fade-in mb-10">
           <p className="cv-kicker mb-3 font-[family-name:var(--font-mono)] text-[11px] uppercase tracking-[0.35em] text-[color:var(--cv-muted)]">
-            Mission Control
-          </p>
-          <h1 className="font-[family-name:var(--font-display)] text-4xl font-semibold tracking-[-0.03em] text-[color:var(--cv-text)] md:text-6xl">
             Constellation
+          </p>
+          <h1 className="font-[family-name:var(--font-display)] text-4xl font-semibold tracking-[-0.03em] text-[color:var(--cv-text)] md:text-6xl md:leading-[1.05]">
+            Dreams in the stars
           </h1>
           <p className="mt-3 max-w-xl text-base leading-relaxed text-[color:var(--cv-muted)] md:text-lg">
-            Trace the shortest route between stars across a living 3D globe.
+            Real bright stars · constellation paths across the sky.
           </p>
           {backendLabel ? (
             <p className="mt-4 font-[family-name:var(--font-mono)] text-xs uppercase tracking-[0.22em] text-[color:var(--cv-accent)]">

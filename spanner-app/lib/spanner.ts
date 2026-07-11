@@ -136,7 +136,7 @@ export async function findShortestPath(
     sql: `
       GRAPH ConstellationGraph
       MATCH p = ANY SHORTEST
-        (a:Star {Name: @start})-[:ConnectedTo]-{1,19}(b:Star {Name: @end})
+        (a:Star {Name: @start})-[:ConnectedTo]-{1,80}(b:Star {Name: @end})
       RETURN TO_JSON(NODES(p)) AS path_nodes, PATH_LENGTH(p) AS hops
     `,
     params: { start: startName, end: endName },

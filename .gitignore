@@ -4,6 +4,7 @@
 /node_modules
 spanner-app/node_modules
 scripts/spanner/node_modules
+scripts/neo4j/node_modules
 /.pnp
 .pnp.*
 .yarn/*

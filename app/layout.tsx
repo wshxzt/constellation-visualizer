@@ -19,8 +19,8 @@ const mono = IBM_Plex_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Constellation Visualizer",
-  description: "Trace shortest paths across a stellar graph",
+  title: "Dreams in the stars",
+  description: "Real bright stars · constellation paths across the sky.",
 };
 
 export default function RootLayout({

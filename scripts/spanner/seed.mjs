@@ -8,8 +8,8 @@ const projectId = process.env.SPANNER_PROJECT_ID ?? 'zhiting-personal';
 const instanceId = process.env.SPANNER_INSTANCE ?? 'constellation-instance';
 const databaseId = process.env.SPANNER_DATABASE ?? 'constellation';
 
-const stars = JSON.parse(readFileSync(join(__dirname, 'data/stars.json'), 'utf8'));
-const connections = JSON.parse(readFileSync(join(__dirname, 'data/connections.json'), 'utf8'));
+const stars = JSON.parse(readFileSync(join(__dirname, '../data/stars.json'), 'utf8'));
+const connections = JSON.parse(readFileSync(join(__dirname, '../data/connections.json'), 'utf8'));
 
 const spanner = new Spanner({ projectId });
 const database = spanner.instance(instanceId).database(databaseId);

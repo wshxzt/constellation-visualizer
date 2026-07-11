@@ -1,0 +1,8 @@
+{
+  "name": "constellation-neo4j-seed",
+  "private": true,
+  "type": "module",
+  "dependencies": {
+    "neo4j-driver": "^6.2.0"
+  }
+}

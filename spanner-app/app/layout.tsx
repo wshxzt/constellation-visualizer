@@ -19,8 +19,8 @@ const mono = IBM_Plex_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Constellation Visualizer (Cloud Spanner)",
-  description: "Constellation graph explorer backed by Cloud Spanner",
+  title: "Dreams in the stars · Spanner",
+  description: "Real bright stars · constellation paths across the sky.",
 };
 
 export default function RootLayout({

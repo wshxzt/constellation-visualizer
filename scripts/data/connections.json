@@ -1,0 +1,462 @@
+[
+  {
+    "fromStarId": 1,
+    "toStarId": 22
+  },
+  {
+    "fromStarId": 1,
+    "toStarId": 34
+  },
+  {
+    "fromStarId": 1,
+    "toStarId": 44
+  },
+  {
+    "fromStarId": 2,
+    "toStarId": 9
+  },
+  {
+    "fromStarId": 2,
+    "toStarId": 22
+  },
+  {
+    "fromStarId": 2,
+    "toStarId": 38
+  },
+  {
+    "fromStarId": 2,
+    "toStarId": 43
+  },
+  {
+    "fromStarId": 3,
+    "toStarId": 11
+  },
+  {
+    "fromStarId": 3,
+    "toStarId": 19
+  },
+  {
+    "fromStarId": 3,
+    "toStarId": 40
+  },
+  {
+    "fromStarId": 4,
+    "toStarId": 82
+  },
+  {
+    "fromStarId": 4,
+    "toStarId": 83
+  },
+  {
+    "fromStarId": 5,
+    "toStarId": 12
+  },
+  {
+    "fromStarId": 5,
+    "toStarId": 20
+  },
+  {
+    "fromStarId": 5,
+    "toStarId": 49
+  },
+  {
+    "fromStarId": 5,
+    "toStarId": 69
+  },
+  {
+    "fromStarId": 6,
+    "toStarId": 27
+  },
+  {
+    "fromStarId": 6,
+    "toStarId": 32
+  },
+  {
+    "fromStarId": 6,
+    "toStarId": 39
+  },
+  {
+    "fromStarId": 7,
+    "toStarId": 47
+  },
+  {
+    "fromStarId": 7,
+    "toStarId": 54
+  },
+  {
+    "fromStarId": 8,
+    "toStarId": 17
+  },
+  {
+    "fromStarId": 8,
+    "toStarId": 41
+  },
+  {
+    "fromStarId": 8,
+    "toStarId": 46
+  },
+  {
+    "fromStarId": 9,
+    "toStarId": 29
+  },
+  {
+    "fromStarId": 10,
+    "toStarId": 41
+  },
+  {
+    "fromStarId": 10,
+    "toStarId": 47
+  },
+  {
+    "fromStarId": 10,
+    "toStarId": 80
+  },
+  {
+    "fromStarId": 11,
+    "toStarId": 56
+  },
+  {
+    "fromStarId": 12,
+    "toStarId": 20
+  },
+  {
+    "fromStarId": 12,
+    "toStarId": 71
+  },
+  {
+    "fromStarId": 12,
+    "toStarId": 72
+  },
+  {
+    "fromStarId": 13,
+    "toStarId": 19
+  },
+  {
+    "fromStarId": 13,
+    "toStarId": 86
+  },
+  {
+    "fromStarId": 14,
+    "toStarId": 25
+  },
+  {
+    "fromStarId": 14,
+    "toStarId": 27
+  },
+  {
+    "fromStarId": 15,
+    "toStarId": 83
+  },
+  {
+    "fromStarId": 15,
+    "toStarId": 84
+  },
+  {
+    "fromStarId": 15,
+    "toStarId": 85
+  },
+  {
+    "fromStarId": 16,
+    "toStarId": 24
+  },
+  {
+    "fromStarId": 16,
+    "toStarId": 73
+  },
+  {
+    "fromStarId": 16,
+    "toStarId": 74
+  },
+  {
+    "fromStarId": 17,
+    "toStarId": 23
+  },
+  {
+    "fromStarId": 17,
+    "toStarId": 41
+  },
+  {
+    "fromStarId": 18,
+    "toStarId": 29
+  },
+  {
+    "fromStarId": 18,
+    "toStarId": 42
+  },
+  {
+    "fromStarId": 19,
+    "toStarId": 26
+  },
+  {
+    "fromStarId": 20,
+    "toStarId": 48
+  },
+  {
+    "fromStarId": 20,
+    "toStarId": 70
+  },
+  {
+    "fromStarId": 21,
+    "toStarId": 46
+  },
+  {
+    "fromStarId": 21,
+    "toStarId": 51
+  },
+  {
+    "fromStarId": 21,
+    "toStarId": 52
+  },
+  {
+    "fromStarId": 22,
+    "toStarId": 34
+  },
+  {
+    "fromStarId": 23,
+    "toStarId": 41
+  },
+  {
+    "fromStarId": 24,
+    "toStarId": 35
+  },
+  {
+    "fromStarId": 24,
+    "toStarId": 37
+  },
+  {
+    "fromStarId": 24,
+    "toStarId": 75
+  },
+  {
+    "fromStarId": 25,
+    "toStarId": 47
+  },
+  {
+    "fromStarId": 25,
+    "toStarId": 80
+  },
+  {
+    "fromStarId": 26,
+    "toStarId": 86
+  },
+  {
+    "fromStarId": 27,
+    "toStarId": 39
+  },
+  {
+    "fromStarId": 28,
+    "toStarId": 31
+  },
+  {
+    "fromStarId": 28,
+    "toStarId": 47
+  },
+  {
+    "fromStarId": 29,
+    "toStarId": 42
+  },
+  {
+    "fromStarId": 30,
+    "toStarId": 36
+  },
+  {
+    "fromStarId": 30,
+    "toStarId": 65
+  },
+  {
+    "fromStarId": 30,
+    "toStarId": 66
+  },
+  {
+    "fromStarId": 31,
+    "toStarId": 54
+  },
+  {
+    "fromStarId": 32,
+    "toStarId": 59
+  },
+  {
+    "fromStarId": 32,
+    "toStarId": 63
+  },
+  {
+    "fromStarId": 32,
+    "toStarId": 87
+  },
+  {
+    "fromStarId": 33,
+    "toStarId": 53
+  },
+  {
+    "fromStarId": 33,
+    "toStarId": 65
+  },
+  {
+    "fromStarId": 35,
+    "toStarId": 55
+  },
+  {
+    "fromStarId": 35,
+    "toStarId": 88
+  },
+  {
+    "fromStarId": 36,
+    "toStarId": 66
+  },
+  {
+    "fromStarId": 36,
+    "toStarId": 82
+  },
+  {
+    "fromStarId": 37,
+    "toStarId": 40
+  },
+  {
+    "fromStarId": 37,
+    "toStarId": 75
+  },
+  {
+    "fromStarId": 38,
+    "toStarId": 43
+  },
+  {
+    "fromStarId": 40,
+    "toStarId": 42
+  },
+  {
+    "fromStarId": 40,
+    "toStarId": 56
+  },
+  {
+    "fromStarId": 44,
+    "toStarId": 54
+  },
+  {
+    "fromStarId": 45,
+    "toStarId": 67
+  },
+  {
+    "fromStarId": 45,
+    "toStarId": 68
+  },
+  {
+    "fromStarId": 48,
+    "toStarId": 69
+  },
+  {
+    "fromStarId": 48,
+    "toStarId": 70
+  },
+  {
+    "fromStarId": 49,
+    "toStarId": 68
+  },
+  {
+    "fromStarId": 50,
+    "toStarId": 60
+  },
+  {
+    "fromStarId": 50,
+    "toStarId": 61
+  },
+  {
+    "fromStarId": 51,
+    "toStarId": 81
+  },
+  {
+    "fromStarId": 51,
+    "toStarId": 85
+  },
+  {
+    "fromStarId": 52,
+    "toStarId": 81
+  },
+  {
+    "fromStarId": 53,
+    "toStarId": 64
+  },
+  {
+    "fromStarId": 55,
+    "toStarId": 88
+  },
+  {
+    "fromStarId": 57,
+    "toStarId": 58
+  },
+  {
+    "fromStarId": 57,
+    "toStarId": 77
+  },
+  {
+    "fromStarId": 57,
+    "toStarId": 78
+  },
+  {
+    "fromStarId": 58,
+    "toStarId": 59
+  },
+  {
+    "fromStarId": 59,
+    "toStarId": 87
+  },
+  {
+    "fromStarId": 60,
+    "toStarId": 61
+  },
+  {
+    "fromStarId": 61,
+    "toStarId": 62
+  },
+  {
+    "fromStarId": 61,
+    "toStarId": 63
+  },
+  {
+    "fromStarId": 62,
+    "toStarId": 63
+  },
+  {
+    "fromStarId": 64,
+    "toStarId": 65
+  },
+  {
+    "fromStarId": 66,
+    "toStarId": 68
+  },
+  {
+    "fromStarId": 67,
+    "toStarId": 68
+  },
+  {
+    "fromStarId": 71,
+    "toStarId": 72
+  },
+  {
+    "fromStarId": 73,
+    "toStarId": 74
+  },
+  {
+    "fromStarId": 76,
+    "toStarId": 77
+  },
+  {
+    "fromStarId": 76,
+    "toStarId": 78
+  },
+  {
+    "fromStarId": 76,
+    "toStarId": 79
+  },
+  {
+    "fromStarId": 77,
+    "toStarId": 79
+  },
+  {
+    "fromStarId": 82,
+    "toStarId": 83
+  },
+  {
+    "fromStarId": 84,
+    "toStarId": 85
+  }
+]

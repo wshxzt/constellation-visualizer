@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "astronomy:build": "node scripts/astronomy/build-dataset.mjs"
   },
   "dependencies": {
     "neo4j-driver": "^6.2.0",

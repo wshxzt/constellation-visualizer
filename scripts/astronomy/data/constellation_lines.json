@@ -1,0 +1,104 @@
+[
+  ["Meissa", "Betelgeuse"],
+  ["Meissa", "Bellatrix"],
+  ["Betelgeuse", "Mintaka"],
+  ["Bellatrix", "Mintaka"],
+  ["Mintaka", "Alnilam"],
+  ["Alnilam", "Alnitak"],
+  ["Alnitak", "Saiph"],
+  ["Mintaka", "Rigel"],
+  ["Saiph", "Rigel"],
+
+  ["Dubhe", "Merak"],
+  ["Merak", "Phecda"],
+  ["Phecda", "Megrez"],
+  ["Megrez", "Dubhe"],
+  ["Megrez", "Alioth"],
+  ["Alioth", "Mizar"],
+  ["Mizar", "Alkaid"],
+
+  ["Polaris", "Kochab"],
+  ["Kochab", "Pherkad"],
+
+  ["Caph", "Schedar"],
+  ["Schedar", "Navi"],
+  ["Navi", "Ruchbah"],
+  ["Ruchbah", "Segin"],
+
+  ["Deneb", "Sadr"],
+  ["Sadr", "Gienah"],
+  ["Sadr", "Albireo"],
+
+  ["Vega", "Eltanin"],
+
+  ["Altair", "Tarazed"],
+  ["Altair", "Alshain"],
+
+  ["Sirius", "Mirzam"],
+  ["Sirius", "Adhara"],
+  ["Adhara", "Wezen"],
+
+  ["Procyon", "Alhena"],
+  ["Castor", "Pollux"],
+  ["Pollux", "Alhena"],
+
+  ["Aldebaran", "El Nath"],
+  ["El Nath", "Capella"],
+  ["Capella", "Menkalinan"],
+
+  ["Regulus", "Algieba"],
+  ["Algieba", "Zosma"],
+  ["Zosma", "Denebola"],
+  ["Regulus", "Denebola"],
+
+  ["Arcturus", "Muphrid"],
+  ["Arcturus", "Izar"],
+  ["Muphrid", "Spica"],
+
+  ["Spica", "Porrima"],
+  ["Porrima", "Vindemiatrix"],
+  ["Vindemiatrix", "Spica"],
+
+  ["Antares", "Dschubba"],
+  ["Dschubba", "Graffias"],
+  ["Antares", "Shaula"],
+  ["Shaula", "Lesath"],
+  ["Shaula", "Sargas"],
+
+  ["Kaus Australis", "Nunki"],
+  ["Nunki", "Ascella"],
+  ["Ascella", "Kaus Australis"],
+
+  ["Acrux", "Mimosa"],
+  ["Mimosa", "Gacrux"],
+  ["Gacrux", "Delta Crucis"],
+  ["Delta Crucis", "Acrux"],
+
+  ["Hadar", "Rigil Kentaurus"],
+  ["Hadar", "Menkent"],
+  ["Menkent", "Atria"],
+
+  ["Alpheratz", "Mirach"],
+  ["Mirach", "Almach"],
+  ["Alpheratz", "Algenib"],
+
+  ["Markab", "Scheat"],
+  ["Scheat", "Alpheratz"],
+  ["Markab", "Algenib"],
+  ["Markab", "Enif"],
+
+  ["Mirfak", "Algol"],
+  ["Algol", "Almach"],
+
+  ["Canopus", "Avior"],
+  ["Avior", "Alsephina"],
+  ["Canopus", "Achernar"],
+
+  ["Fomalhaut", "Alnair"],
+  ["Alnair", "Peacock"],
+
+  ["Alphard", "Regulus"],
+  ["Deneb", "Vega"],
+  ["Vega", "Altair"],
+  ["Altair", "Deneb"]
+]
