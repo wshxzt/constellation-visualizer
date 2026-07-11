@@ -12,12 +12,10 @@ Interactive 3D constellation explorer. Pick two bright stars and find the shorte
 ## Repo layout
 
 ```
-app/                  # Neo4j Next.js app
-spanner-app/          # Spanner Next.js app
-shared/               # Shared UI (globe, starfield, visualizer)
-scripts/astronomy/    # Build curated sky dataset → scripts/data/
-scripts/neo4j/        # Seed Neo4j from scripts/data/
-scripts/spanner/      # Seed Spanner from scripts/data/
+app/           # Neo4j Next.js app
+spanner-app/   # Spanner Next.js app
+shared/        # Shared UI (globe, starfield, visualizer)
+scripts/       # Dataset build and DB seed helpers
 ```
 
 ## Local development
@@ -50,33 +48,6 @@ npm run dev
 ```
 
 Application Default Credentials (or a service account) must be able to query the Spanner database.
-
-## Astronomy data & seeding
-
-Rebuild the shared JSON from the vendored catalog:
-
-```bash
-npm run astronomy:build
-# writes scripts/data/stars.json and scripts/data/connections.json
-```
-
-Seed Neo4j:
-
-```bash
-cd scripts/neo4j && npm install
-# requires NEO4J_URI / NEO4J_USERNAME / NEO4J_PASSWORD
-node seed.mjs
-```
-
-Seed Spanner:
-
-```bash
-cd scripts/spanner && npm install
-# optional: SPANNER_PROJECT_ID, SPANNER_INSTANCE, SPANNER_DATABASE
-node seed.mjs
-```
-
-Schema for Spanner lives in `scripts/spanner/schema.ddl` (and `graph.ddl` for the property graph).
 
 ## API
 
