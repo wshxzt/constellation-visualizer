@@ -2,13 +2,6 @@
 
 Interactive 3D constellation explorer. Pick two bright stars and find the shortest hop path across a real sky graph — backed by either **Neo4j** or **Google Cloud Spanner Graph**.
 
-## Live demos
-
-| Backend | URL |
-| --- | --- |
-| Neo4j | https://constellation-visualizer-929315648024.us-central1.run.app |
-| Cloud Spanner | https://constellation-visualizer-spanner-929315648024.us-central1.run.app |
-
 ## What it shows
 
 - **88 real bright stars** at true RA/Dec positions on a Three.js globe
@@ -50,8 +43,8 @@ cd spanner-app
 npm install
 
 # SPANNER_PROJECT_ID=...
-# SPANNER_INSTANCE=constellation-instance
-# SPANNER_DATABASE=constellation
+# SPANNER_INSTANCE=...
+# SPANNER_DATABASE=...
 
 npm run dev
 ```
@@ -84,31 +77,6 @@ node seed.mjs
 ```
 
 Schema for Spanner lives in `scripts/spanner/schema.ddl` (and `graph.ddl` for the property graph).
-
-## Deploy (Cloud Run)
-
-Neo4j app (from repo root):
-
-```bash
-gcloud run deploy constellation-visualizer \
-  --source . \
-  --region us-central1 \
-  --project zhiting-personal \
-  --allow-unauthenticated
-```
-
-Spanner app (custom Dockerfile via Cloud Build):
-
-```bash
-gcloud builds submit --config=cloudbuild.spanner.yaml --project=zhiting-personal .
-
-gcloud run deploy constellation-visualizer-spanner \
-  --image=us-central1-docker.pkg.dev/zhiting-personal/cloud-run-source-deploy/constellation-visualizer-spanner \
-  --region=us-central1 \
-  --project=zhiting-personal \
-  --allow-unauthenticated \
-  --set-env-vars="SPANNER_PROJECT_ID=zhiting-personal,SPANNER_INSTANCE=constellation-instance,SPANNER_DATABASE=constellation"
-```
 
 ## API
 
