@@ -1,36 +1,121 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Dreams in the stars
 
-## Getting Started
+Interactive 3D constellation explorer. Pick two bright stars and find the shortest hop path across a real sky graph — backed by either **Neo4j** or **Google Cloud Spanner Graph**.
 
-First, run the development server:
+## Live demos
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+| Backend | URL |
+| --- | --- |
+| Neo4j | https://constellation-visualizer-929315648024.us-central1.run.app |
+| Cloud Spanner | https://constellation-visualizer-spanner-929315648024.us-central1.run.app |
+
+## What it shows
+
+- **88 real bright stars** at true RA/Dec positions on a Three.js globe
+- **Constellation stick-figure edges**, plus light nearest-neighbor bridges so the graph stays connected
+- Shortest-path queries via Neo4j `shortestPath` or Spanner Graph GQL `ANY SHORTEST`
+- Animated starfield (meteors, rockets, satellites) behind the globe
+
+## Repo layout
+
+```
+app/                  # Neo4j Next.js app
+spanner-app/          # Spanner Next.js app
+shared/               # Shared UI (globe, starfield, visualizer)
+scripts/astronomy/    # Build curated sky dataset → scripts/data/
+scripts/neo4j/        # Seed Neo4j from scripts/data/
+scripts/spanner/      # Seed Spanner from scripts/data/
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Local development
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### Neo4j app
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```bash
+# Create .env.local with:
+# NEO4J_URI=...
+# NEO4J_USERNAME=neo4j
+# NEO4J_PASSWORD=...
 
-## Learn More
+npm install
+npm run dev
+```
 
-To learn more about Next.js, take a look at the following resources:
+Open http://localhost:3000
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### Spanner app
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+```bash
+cd spanner-app
+npm install
 
-## Deploy on Vercel
+# SPANNER_PROJECT_ID=...
+# SPANNER_INSTANCE=constellation-instance
+# SPANNER_DATABASE=constellation
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+npm run dev
+```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Application Default Credentials (or a service account) must be able to query the Spanner database.
+
+## Astronomy data & seeding
+
+Rebuild the shared JSON from the vendored catalog:
+
+```bash
+npm run astronomy:build
+# writes scripts/data/stars.json and scripts/data/connections.json
+```
+
+Seed Neo4j:
+
+```bash
+cd scripts/neo4j && npm install
+# requires NEO4J_URI / NEO4J_USERNAME / NEO4J_PASSWORD
+node seed.mjs
+```
+
+Seed Spanner:
+
+```bash
+cd scripts/spanner && npm install
+# optional: SPANNER_PROJECT_ID, SPANNER_INSTANCE, SPANNER_DATABASE
+node seed.mjs
+```
+
+Schema for Spanner lives in `scripts/spanner/schema.ddl` (and `graph.ddl` for the property graph).
+
+## Deploy (Cloud Run)
+
+Neo4j app (from repo root):
+
+```bash
+gcloud run deploy constellation-visualizer \
+  --source . \
+  --region us-central1 \
+  --project zhiting-personal \
+  --allow-unauthenticated
+```
+
+Spanner app (custom Dockerfile via Cloud Build):
+
+```bash
+gcloud builds submit --config=cloudbuild.spanner.yaml --project=zhiting-personal .
+
+gcloud run deploy constellation-visualizer-spanner \
+  --image=us-central1-docker.pkg.dev/zhiting-personal/cloud-run-source-deploy/constellation-visualizer-spanner \
+  --region=us-central1 \
+  --project=zhiting-personal \
+  --allow-unauthenticated \
+  --set-env-vars="SPANNER_PROJECT_ID=zhiting-personal,SPANNER_INSTANCE=constellation-instance,SPANNER_DATABASE=constellation"
+```
+
+## API
+
+Both apps expose the same routes:
+
+| Route | Description |
+| --- | --- |
+| `GET /api/stars` | All stars (`id`, `name`, `x`, `y`) |
+| `GET /api/connections` | Graph edges for the globe |
+| `GET /api/path?start=Name&end=Name` | Shortest path between two stars |
