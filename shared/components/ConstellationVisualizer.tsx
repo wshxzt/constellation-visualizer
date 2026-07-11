@@ -98,7 +98,7 @@ export function ConstellationVisualizer({
     <div className="cv-shell relative min-h-screen overflow-hidden">
       <Starfield />
 
-      <div className="cv-atmosphere pointer-events-none absolute inset-0 -z-[5]" />
+      <div className="cv-atmosphere pointer-events-none absolute inset-0 z-[1]" />
 
       <main className="relative z-10 mx-auto flex w-full max-w-5xl flex-col px-6 py-10 md:px-10 md:py-14">
         <header className="cv-fade-in mb-10">

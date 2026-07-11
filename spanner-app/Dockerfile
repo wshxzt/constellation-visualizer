@@ -13,11 +13,12 @@ WORKDIR /app
 COPY --from=deps /app/spanner-app/node_modules ./spanner-app/node_modules
 COPY shared ./shared
 COPY spanner-app ./spanner-app
-# Shared UI lives outside spanner-app; hoist React so TS/bundler can resolve it.
+# Shared UI lives outside spanner-app; hoist deps so TS/bundler can resolve them.
 RUN mkdir -p /app/node_modules \
   && ln -s /app/spanner-app/node_modules/react /app/node_modules/react \
   && ln -s /app/spanner-app/node_modules/react-dom /app/node_modules/react-dom \
-  && ln -s /app/spanner-app/node_modules/@types /app/node_modules/@types
+  && ln -s /app/spanner-app/node_modules/@types /app/node_modules/@types \
+  && ln -s /app/spanner-app/node_modules/three /app/node_modules/three
 WORKDIR /app/spanner-app
 ENV NEXT_TELEMETRY_DISABLED=1
 RUN npm run build
