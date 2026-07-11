@@ -5,7 +5,7 @@ import { Spanner } from '@google-cloud/spanner';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const projectId = process.env.SPANNER_PROJECT_ID ?? 'zhiting-personal';
-const instanceId = process.env.SPANNER_INSTANCE ?? 'grocerguard-instance';
+const instanceId = process.env.SPANNER_INSTANCE ?? 'constellation-instance';
 const databaseId = process.env.SPANNER_DATABASE ?? 'constellation';
 
 const stars = JSON.parse(readFileSync(join(__dirname, 'data/stars.json'), 'utf8'));

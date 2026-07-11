@@ -1,6 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { getAdjacencyList, getStars } from '@/lib/spanner';
-import { findShortestPath } from '@/lib/pathfinding';
+import { findShortestPath } from '@/lib/spanner';
 
 export async function GET(request: NextRequest) {
   const { searchParams } = new URL(request.url);
@@ -15,8 +14,7 @@ export async function GET(request: NextRequest) {
   }
 
   try {
-    const [stars, adjacency] = await Promise.all([getStars(), getAdjacencyList()]);
-    const result = findShortestPath(stars, adjacency, start, end);
+    const result = await findShortestPath(start, end);
 
     if (!result) {
       return NextResponse.json(

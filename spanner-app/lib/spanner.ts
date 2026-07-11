@@ -28,25 +28,50 @@ export interface StarRecord {
   y: number;
 }
 
+export interface PathNode {
+  name: string;
+  x: number;
+  y: number;
+}
+
+interface GraphNodeJson {
+  properties?: {
+    StarId?: string | number;
+    Name?: string;
+    X?: number;
+    Y?: number;
+  };
+}
+
+function toNumber(value: unknown): number {
+  if (typeof value === 'number') return value;
+  if (typeof value === 'string') return Number(value);
+  if (value && typeof value === 'object' && 'value' in value) {
+    return Number((value as { value: string | number }).value);
+  }
+  return Number(value);
+}
+
 export async function getStars(): Promise<StarRecord[]> {
   const [rows] = await getDatabase().run({
     sql: `
-      SELECT StarId, Name, X, Y
-      FROM Stars
+      GRAPH ConstellationGraph
+      MATCH (s:Star)
+      RETURN s.StarId AS StarId, s.Name AS Name, s.X AS X, s.Y AS Y
       ORDER BY StarId
     `,
   });
 
   return rows.map((row) => {
     const json = row.toJSON() as {
-      StarId: string;
+      StarId: string | number;
       Name: string;
       X: number;
       Y: number;
     };
 
     return {
-      id: Number(json.StarId),
+      id: toNumber(json.StarId),
       name: json.Name,
       x: json.X,
       y: json.Y,
@@ -62,16 +87,15 @@ export async function getConnections(): Promise<
 > {
   const [rows] = await getDatabase().run({
     sql: `
-      SELECT
-        s1.Name AS FromName,
-        s1.X AS FromX,
-        s1.Y AS FromY,
-        s2.Name AS ToName,
-        s2.X AS ToX,
-        s2.Y AS ToY
-      FROM Connections c
-      JOIN Stars s1 ON c.FromStarId = s1.StarId
-      JOIN Stars s2 ON c.ToStarId = s2.StarId
+      GRAPH ConstellationGraph
+      MATCH (a:Star)-[:ConnectedTo]->(b:Star)
+      RETURN
+        a.Name AS FromName,
+        a.X AS FromX,
+        a.Y AS FromY,
+        b.Name AS ToName,
+        b.X AS ToX,
+        b.Y AS ToY
     `,
   });
 
@@ -92,29 +116,55 @@ export async function getConnections(): Promise<
   });
 }
 
-export async function getAdjacencyList(): Promise<Map<number, number[]>> {
-  const [rows] = await getDatabase().run({
-    sql: `
-      SELECT FromStarId, ToStarId
-      FROM Connections
-    `,
-  });
-
-  const adjacency = new Map<number, number[]>();
-
-  const addEdge = (from: number, to: number) => {
-    const neighbors = adjacency.get(from) ?? [];
-    neighbors.push(to);
-    adjacency.set(from, neighbors);
-  };
-
-  for (const row of rows) {
-    const json = row.toJSON() as { FromStarId: string; ToStarId: string };
-    const from = Number(json.FromStarId);
-    const to = Number(json.ToStarId);
-    addEdge(from, to);
-    addEdge(to, from);
+export async function findShortestPath(
+  startName: string,
+  endName: string,
+): Promise<{ path: PathNode[]; hops: number } | null> {
+  if (startName === endName) {
+    const stars = await getStars();
+    const star = stars.find((s) => s.name === startName);
+    if (!star) return null;
+    return {
+      path: [{ name: star.name, x: star.x, y: star.y }],
+      hops: 0,
+    };
   }
 
-  return adjacency;
+  // Undirected ANY SHORTEST over ConnectedTo edges (matches Neo4j shortestPath semantics).
+  // Quantifier upper bound covers the full 20-star constellation diameter.
+  const [rows] = await getDatabase().run({
+    sql: `
+      GRAPH ConstellationGraph
+      MATCH p = ANY SHORTEST
+        (a:Star {Name: @start})-[:ConnectedTo]-{1,19}(b:Star {Name: @end})
+      RETURN TO_JSON(NODES(p)) AS path_nodes, PATH_LENGTH(p) AS hops
+    `,
+    params: { start: startName, end: endName },
+    types: { start: 'string', end: 'string' },
+  });
+
+  if (rows.length === 0) {
+    return null;
+  }
+
+  const json = rows[0].toJSON() as {
+    path_nodes: GraphNodeJson[] | string;
+    hops: string | number;
+  };
+
+  const nodes: GraphNodeJson[] =
+    typeof json.path_nodes === 'string'
+      ? (JSON.parse(json.path_nodes) as GraphNodeJson[])
+      : json.path_nodes;
+
+  const path = nodes.map((node) => ({
+    name: String(node.properties?.Name ?? ''),
+    x: toNumber(node.properties?.X),
+    y: toNumber(node.properties?.Y),
+  }));
+
+  return {
+    path,
+    hops: toNumber(json.hops),
+  };
 }
