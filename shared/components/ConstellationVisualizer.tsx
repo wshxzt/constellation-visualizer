@@ -1,6 +1,8 @@
 'use client';
 
 import { useState, useEffect } from 'react';
+import { Starfield } from './Starfield';
+import { ConstellationCanvas } from './ConstellationCanvas';
 
 export interface Star {
   id: number;
@@ -93,144 +95,110 @@ export function ConstellationVisualizer({
   };
 
   return (
-    <div className="max-w-4xl mx-auto p-8">
-      <div className="mb-8">
-        <h1 className="text-4xl font-bold">Constellation Visualizer</h1>
-        {backendLabel ? (
-          <p className="mt-2 text-sm uppercase tracking-wide text-blue-600">
-            {backendLabel}
+    <div className="cv-shell relative min-h-screen overflow-hidden">
+      <Starfield />
+
+      <div className="cv-atmosphere pointer-events-none absolute inset-0 -z-[5]" />
+
+      <main className="relative z-10 mx-auto flex w-full max-w-5xl flex-col px-6 py-10 md:px-10 md:py-14">
+        <header className="cv-fade-in mb-10">
+          <p className="cv-kicker mb-3 font-[family-name:var(--font-mono)] text-[11px] uppercase tracking-[0.35em] text-[color:var(--cv-muted)]">
+            Mission Control
           </p>
-        ) : null}
-      </div>
+          <h1 className="font-[family-name:var(--font-display)] text-4xl font-semibold tracking-[-0.03em] text-[color:var(--cv-text)] md:text-6xl">
+            Constellation
+          </h1>
+          <p className="mt-3 max-w-xl text-base leading-relaxed text-[color:var(--cv-muted)] md:text-lg">
+            Trace the shortest route between stars across a living 3D globe.
+          </p>
+          {backendLabel ? (
+            <p className="mt-4 font-[family-name:var(--font-mono)] text-xs uppercase tracking-[0.22em] text-[color:var(--cv-accent)]">
+              {backendLabel}
+            </p>
+          ) : null}
+        </header>
 
-      <div className="flex gap-4 mb-6">
-        <select
-          className="border p-2 rounded w-64"
-          value={start}
-          onChange={(e) => setStart(e.target.value)}
-        >
-          <option value="">Select Start Star</option>
-          {stars.map((star) => (
-            <option key={star.id} value={star.name}>
-              {star.name}
-            </option>
-          ))}
-        </select>
-        <select
-          className="border p-2 rounded w-64"
-          value={end}
-          onChange={(e) => setEnd(e.target.value)}
-        >
-          <option value="">Select End Star</option>
-          {stars.map((star) => (
-            <option key={star.id} value={star.name}>
-              {star.name}
-            </option>
-          ))}
-        </select>
-        <button
-          onClick={findPath}
-          disabled={loading || !start || !end}
-          className="bg-black text-white px-8 py-2 rounded disabled:bg-gray-400"
-        >
-          {loading ? 'Searching...' : 'Find Path'}
-        </button>
-      </div>
-
-      <p className="text-sm text-gray-500 mb-4">
-        Click a star to set the start, then click another to find the path.
-      </p>
-
-      <div className="w-fit border rounded-lg overflow-hidden bg-[#0a0a0a]">
-        <svg width="900" height="650" className="block">
-          {connections.map((conn, index) => (
-            <line
-              key={index}
-              x1={conn.from.x}
-              y1={conn.from.y}
-              x2={conn.to.x}
-              y2={conn.to.y}
-              stroke="#333"
-              strokeWidth="1"
-            />
-          ))}
-
-          {result?.path && result.path.length > 1 &&
-            result.path.slice(0, -1).map((node, index) => {
-              const next = result.path![index + 1];
-              return (
-                <line
-                  key={index}
-                  x1={node.x}
-                  y1={node.y}
-                  x2={next.x}
-                  y2={next.y}
-                  stroke="#00ff88"
-                  strokeWidth="3"
-                />
-              );
-            })}
-
-          {stars.map((star) => (
-            <g
-              key={star.id}
-              onClick={() => handleStarClick(star.name)}
-              className="cursor-pointer"
+        <section className="cv-fade-in-delay mb-6 flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-end">
+          <label className="flex min-w-[12rem] flex-1 flex-col gap-2">
+            <span className="font-[family-name:var(--font-mono)] text-[10px] uppercase tracking-[0.28em] text-[color:var(--cv-muted)]">
+              Origin
+            </span>
+            <select
+              className="cv-select"
+              value={start}
+              onChange={(e) => setStart(e.target.value)}
             >
-              <circle cx={star.x} cy={star.y} r="14" fill="transparent" />
-              <circle
-                cx={star.x}
-                cy={star.y}
-                r="6"
-                fill={
-                  start === star.name
-                    ? '#ffcc00'
-                    : end === star.name
-                      ? '#ff6666'
-                      : '#aaa'
-                }
-                stroke="#fff"
-                strokeWidth="1"
-                className="hover:fill-white transition-colors"
-              />
-              <text
-                x={star.x}
-                y={star.y - 12}
-                fill="#ccc"
-                fontSize="11"
-                textAnchor="middle"
-                pointerEvents="none"
-              >
-                {star.name}
-              </text>
-            </g>
-          ))}
-        </svg>
-      </div>
+              <option value="">Select start star</option>
+              {stars.map((star) => (
+                <option key={star.id} value={star.name}>
+                  {star.name}
+                </option>
+              ))}
+            </select>
+          </label>
 
-      {result && !result.error && result.path && (
-        <div className="mt-6 p-4 border rounded bg-gray-50">
-          <p className="font-semibold mb-2">
-            Shortest path found ({result.hops} hops):
-          </p>
-          <div className="flex flex-wrap gap-2">
-            {result.path.map((node, index) => (
-              <span
-                key={index}
-                className="bg-black text-white px-3 py-1 rounded text-sm"
-              >
-                {node.name}
-              </span>
-            ))}
+          <label className="flex min-w-[12rem] flex-1 flex-col gap-2">
+            <span className="font-[family-name:var(--font-mono)] text-[10px] uppercase tracking-[0.28em] text-[color:var(--cv-muted)]">
+              Destination
+            </span>
+            <select
+              className="cv-select"
+              value={end}
+              onChange={(e) => setEnd(e.target.value)}
+            >
+              <option value="">Select end star</option>
+              {stars.map((star) => (
+                <option key={star.id} value={star.name}>
+                  {star.name}
+                </option>
+              ))}
+            </select>
+          </label>
+
+          <button
+            onClick={findPath}
+            disabled={loading || !start || !end}
+            className="cv-button"
+          >
+            {loading ? 'Plotting…' : 'Find Path'}
+          </button>
+        </section>
+
+        <div className="cv-panel cv-fade-in-late overflow-hidden">
+          <ConstellationCanvas
+            stars={stars}
+            connections={connections}
+            path={result?.path}
+            start={start || undefined}
+            end={end || undefined}
+            onStarActivate={handleStarClick}
+          />
+        </div>
+
+        {result && !result.error && result.path && (
+          <div className="cv-result mt-6">
+            <p className="mb-3 font-[family-name:var(--font-mono)] text-[10px] uppercase tracking-[0.28em] text-[color:var(--cv-muted)]">
+              Shortest path · {result.hops} hops
+            </p>
+            <div className="flex flex-wrap items-center gap-2">
+              {result.path.map((node, index) => (
+                <span key={index} className="contents">
+                  <span className="cv-chip">{node.name}</span>
+                  {index < result.path!.length - 1 ? (
+                    <span className="text-[color:var(--cv-accent)]" aria-hidden>
+                      →
+                    </span>
+                  ) : null}
+                </span>
+              ))}
+            </div>
           </div>
-        </div>
-      )}
+        )}
 
-      {result?.error && (
-        <div className="mt-6 p-4 border rounded bg-red-50 text-red-600">
-          {result.error}
-        </div>
-      )}
+        {result?.error && (
+          <div className="cv-error mt-6">{result.error}</div>
+        )}
+      </main>
     </div>
   );
 }

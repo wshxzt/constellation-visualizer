@@ -1,0 +1,284 @@
+:root {
+  --cv-bg-0: #03060d;
+  --cv-bg-1: #08101c;
+  --cv-text: #eef3fb;
+  --cv-muted: #8b9bb3;
+  --cv-accent: #5eead4;
+  --cv-accent-warm: #f0c75e;
+  --cv-panel: rgba(8, 14, 26, 0.72);
+  --cv-border: rgba(148, 163, 184, 0.22);
+}
+
+.cv-shell {
+  background:
+    radial-gradient(1200px 700px at 50% -10%, rgba(56, 90, 140, 0.28), transparent 60%),
+    radial-gradient(900px 500px at 90% 80%, rgba(240, 199, 94, 0.06), transparent 55%),
+    linear-gradient(165deg, var(--cv-bg-1) 0%, var(--cv-bg-0) 55%, #010309 100%);
+  color: var(--cv-text);
+}
+
+.cv-atmosphere {
+  background:
+    radial-gradient(ellipse 80% 50% at 50% 0%, rgba(94, 234, 212, 0.05), transparent 70%),
+    radial-gradient(ellipse 60% 40% at 20% 100%, rgba(240, 199, 94, 0.04), transparent 70%);
+}
+
+.cv-select {
+  appearance: none;
+  border: 1px solid var(--cv-border);
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.04), transparent),
+    rgba(4, 8, 16, 0.85);
+  color: var(--cv-text);
+  border-radius: 0.5rem;
+  padding: 0.7rem 0.9rem;
+  outline: none;
+  transition: border-color 160ms ease, box-shadow 160ms ease;
+}
+
+.cv-select:focus {
+  border-color: rgba(94, 234, 212, 0.55);
+  box-shadow: 0 0 0 3px rgba(94, 234, 212, 0.12);
+}
+
+.cv-select option {
+  background: #0b1220;
+  color: #eef3fb;
+}
+
+.cv-button {
+  border: 1px solid rgba(94, 234, 212, 0.35);
+  background: linear-gradient(180deg, rgba(94, 234, 212, 0.2), rgba(94, 234, 212, 0.08));
+  color: var(--cv-text);
+  border-radius: 0.5rem;
+  padding: 0.75rem 1.4rem;
+  font-family: var(--font-mono), ui-monospace, monospace;
+  font-size: 0.72rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  transition: transform 160ms ease, background 160ms ease, opacity 160ms ease;
+}
+
+.cv-button:hover:not(:disabled) {
+  background: linear-gradient(180deg, rgba(94, 234, 212, 0.3), rgba(94, 234, 212, 0.12));
+  transform: translateY(-1px);
+}
+
+.cv-button:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.cv-panel {
+  border: 1px solid var(--cv-border);
+  border-radius: 1rem;
+  background: var(--cv-panel);
+  backdrop-filter: blur(10px);
+  box-shadow:
+    0 0 0 1px rgba(255, 255, 255, 0.03) inset,
+    0 30px 80px rgba(0, 0, 0, 0.45);
+}
+
+.cv-canvas-shell {
+  display: flex;
+  flex-direction: column;
+}
+
+.cv-canvas-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid rgba(148, 163, 184, 0.12);
+}
+
+.cv-canvas-hint {
+  font-family: var(--font-mono), ui-monospace, monospace;
+  font-size: 0.65rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--cv-muted);
+}
+
+.cv-canvas-reset {
+  border: 1px solid rgba(148, 163, 184, 0.28);
+  background: rgba(255, 255, 255, 0.03);
+  color: var(--cv-text);
+  border-radius: 999px;
+  padding: 0.35rem 0.8rem;
+  font-family: var(--font-mono), ui-monospace, monospace;
+  font-size: 0.65rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  transition: border-color 160ms ease, background 160ms ease;
+}
+
+.cv-canvas-reset:hover {
+  border-color: rgba(94, 234, 212, 0.45);
+  background: rgba(94, 234, 212, 0.08);
+}
+
+.cv-canvas-viewport {
+  position: relative;
+  overflow: hidden;
+  touch-action: none;
+  cursor: grab;
+  user-select: none;
+  min-height: 280px;
+  background:
+    radial-gradient(ellipse at center, rgba(20, 36, 64, 0.5), rgba(3, 6, 13, 0.95));
+}
+
+.cv-canvas-viewport-3d {
+  height: min(62vw, 560px);
+  min-height: 420px;
+}
+
+.cv-canvas-viewport.is-dragging,
+.cv-canvas-viewport-3d:active {
+  cursor: grabbing;
+}
+
+.cv-label-layer {
+  position: absolute !important;
+  inset: 0;
+  pointer-events: auto;
+}
+
+.cv-star-label {
+  color: rgba(240, 246, 255, 0.95);
+  font-family: var(--font-mono), ui-monospace, monospace;
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  text-shadow:
+    0 0 8px rgba(0, 0, 0, 0.95),
+    0 1px 2px rgba(0, 0, 0, 1);
+  transform: translateY(-14px);
+  white-space: nowrap;
+  pointer-events: auto;
+  cursor: pointer;
+  user-select: none;
+  transition: opacity 160ms ease;
+}
+
+.cv-star-label.is-hot {
+  color: #ffffff;
+  font-size: 13px;
+  text-shadow:
+    0 0 12px rgba(94, 234, 212, 0.55),
+    0 0 8px rgba(0, 0, 0, 0.95),
+    0 1px 2px rgba(0, 0, 0, 1);
+}
+
+.cv-canvas-globe {
+  transform-style: preserve-3d;
+  transition: transform 80ms linear;
+  will-change: transform;
+}
+
+.cv-canvas-viewport.is-dragging .cv-canvas-globe {
+  transition: none;
+}
+
+.cv-canvas-svg {
+  display: block;
+  width: 100%;
+  height: auto;
+  overflow: visible;
+}
+
+.cv-star-hit {
+  pointer-events: auto;
+}
+
+.cv-result,
+.cv-error {
+  border: 1px solid var(--cv-border);
+  border-radius: 0.85rem;
+  background: rgba(8, 14, 26, 0.75);
+  backdrop-filter: blur(8px);
+  padding: 1rem 1.15rem;
+}
+
+.cv-error {
+  border-color: rgba(251, 113, 133, 0.35);
+  color: #fda4af;
+}
+
+.cv-chip {
+  display: inline-flex;
+  align-items: center;
+  border: 1px solid rgba(94, 234, 212, 0.25);
+  background: rgba(94, 234, 212, 0.08);
+  color: var(--cv-text);
+  border-radius: 999px;
+  padding: 0.35rem 0.75rem;
+  font-family: var(--font-mono), ui-monospace, monospace;
+  font-size: 0.75rem;
+  letter-spacing: 0.04em;
+}
+
+.cv-path-line {
+  animation: cv-draw-path 700ms ease forwards;
+}
+
+.cv-star-pulse {
+  animation: cv-pulse 2.2s ease-in-out infinite;
+}
+
+.cv-fade-in {
+  animation: cv-rise 700ms ease both;
+}
+
+.cv-fade-in-delay {
+  animation: cv-rise 800ms ease both;
+  animation-delay: 80ms;
+}
+
+.cv-fade-in-late {
+  animation: cv-rise 900ms ease both;
+  animation-delay: 140ms;
+}
+
+@keyframes cv-draw-path {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes cv-pulse {
+  0%,
+  100% {
+    opacity: 0.18;
+  }
+  50% {
+    opacity: 0.4;
+  }
+}
+
+@keyframes cv-rise {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cv-path-line,
+  .cv-star-pulse,
+  .cv-fade-in,
+  .cv-fade-in-delay,
+  .cv-fade-in-late {
+    animation: none !important;
+  }
+
+  .cv-path-line {
+    stroke-dashoffset: 0 !important;
+  }
+}
